@@ -10,7 +10,7 @@
 npm install --save dscript
 ```
 
-## Usage
+## Usage with React
 Take the following:
 ```javascript
 import React from 'react'
@@ -51,6 +51,49 @@ export default props =>
     )
   )
 
+```
+
+## Usage with Deku
+Take the following:
+```javascript
+import {element} from 'deku'
+
+export default ({props}) =>
+  <ul>
+    {props.items.map(item =>
+      <li>{item.name}</li>
+    }
+  </ul>
+```
+
+or:
+
+```javascript
+import {element} from 'deku'
+
+export default ({props}) =>
+  element('ul', {},
+    props.items.map(item =>
+      element('li', {}, [
+        item.name
+      ])
+    )
+  )
+```
+
+and instead write:
+```javascript
+import dscript from 'dscript'
+import {element} from 'deku'
+
+const {li, ul} = dscript(element)
+
+export default ({props}) =>
+  ul(
+    props.items.map(item =>
+      li([item.name])
+    )
+  )
 ```
 
 ## API
