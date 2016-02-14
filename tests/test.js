@@ -43,12 +43,14 @@ test('dscript fns pass attributes object', t => {
     class: 'goodbye'
   }
 
-  const {div, p} = dscript((tagName, attrs) => {
+  const {div, p} = dscript((tagName, attrs, children) => {
     if (tagName === 'div' && attrs === divAttrs) {
+      t.same(children, [])
       divCalled = true
     }
 
     if (tagName === 'p' && attrs === pAttrs) {
+      t.same(children, [])
       pCalled = true
     }
   })
@@ -165,10 +167,10 @@ test('dscript is a fn that accepts a list of non html tags to pass to createElem
 test('dscript attaches optional classes and id to attributes and overrides provided attrs', t => {
   let divCalled = false
 
-  const {div} = dscript((tagName, attrs) => {
+  const {div} = dscript((tagName, attrs, children) => {
     if (tagName === 'div') {
       t.is(attrs.id, 'world')
-      t.is(attrs.class, 'hello good-bye')
+      t.same(children, [])
       divCalled = true
     }
   })
