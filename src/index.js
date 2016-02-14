@@ -20,7 +20,6 @@ const getClassesAndId = selector => {
 }
 
 module.exports = createElement => {
-  /* eslint complexity: [2, 9] */
   if (typeof createElement !== 'function') {
     throw new TypeError('Expected createElement to be a function')
   }
@@ -29,18 +28,15 @@ module.exports = createElement => {
     let attrsToPass = attrs || {}
       , childrenToPass = children || []
 
-    if (Array.isArray(classesAndId)) {
-      childrenToPass = classesAndId
-    } else if (typeof classesAndId === 'object') {
-      if (Array.isArray(attrsToPass)) {
-        childrenToPass = attrsToPass
-      }
-      attrsToPass = classesAndId
-    }
-
     if (Array.isArray(attrsToPass)) {
       childrenToPass = attrsToPass
       attrsToPass = {}
+    }
+
+    if (Array.isArray(classesAndId)) {
+      childrenToPass = classesAndId
+    } else if (typeof classesAndId === 'object') {
+      attrsToPass = classesAndId
     }
 
     if (typeof classesAndId === 'string') {
