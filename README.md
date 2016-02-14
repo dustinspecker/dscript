@@ -10,6 +10,25 @@
 npm install --save dscript
 ```
 
+## General Usage
+```javascript
+import dscript from 'dscript'
+import {element} from 'deku'
+
+const {div, li, ul} = dscript(element)
+
+const handleClick = () => alert('hi!')
+
+export default ({props}) =>
+  div('.list-container', {onClick: handleClick}, [
+    ul(
+      props.items.map(item =>
+        li([item.name])
+      )
+    )
+  ])
+```
+
 ## Usage with React
 Take the following:
 ```javascript
