@@ -10,7 +10,13 @@
     "test": "npm run lint && npm run compile && nyc ava"
   },
   "repository": "dustinspecker/dscript",
-  "keywords": [],
+  "keywords": [
+    "dscript",
+    "hyperscript",
+    "virtual",
+    "deku",
+    "react"
+  ],
   "author": {
     "name": "Dustin Specker",
     "email": "DustinSpecker@DustinSpecker.com",
