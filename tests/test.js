@@ -112,6 +112,22 @@ test('dscript fns pass empty children array by default', t => {
   t.ok(spanCalled)
 })
 
+test('dscript fn can handle no attrs, but selector and chilren', t => {
+  let spanCalled = false
+
+  const {span} = dscript((tagName, attrs, children) => {
+    if (tagName === 'span') {
+      t.is(attrs.class, 'hi')
+      t.same(children, ['yo'])
+      spanCalled = true
+    }
+  })
+
+  span('.hi', ['yo'])
+
+  t.ok(spanCalled)
+})
+
 test('dscript fns pass empty object if attrs is not passed but children is', t => {
   let divCalled = false
 
@@ -142,4 +158,52 @@ test('dscript is a fn that accepts a list of non html tags to pass to createElem
   fancy()
 
   t.ok(fancyCalled)
+})
+
+test('dscript attaches optional classes and id to attributes and overrides provided attrs', t => {
+  let divCalled = false
+
+  const {div} = dscript((tagName, attrs) => {
+    if (tagName === 'div') {
+      t.is(attrs.id, 'world')
+      t.is(attrs.class, 'hello good-bye')
+      divCalled = true
+    }
+  })
+
+  div('.hello#world.good-bye', {class: 'yo', id: '3'})
+
+  t.ok(divCalled)
+})
+
+test('id selector overrides attrs.id if provided', t => {
+  let divCalled = false
+
+  const {div} = dscript((tagName, attrs) => {
+    if (tagName === 'div') {
+      t.is(attrs.id, 'yo')
+      t.is(attrs.class, 'hi')
+      divCalled = true
+    }
+  })
+
+  div('#yo', {class: 'hi', id: '3'})
+
+  t.ok(divCalled)
+})
+
+test('class selector overrides attrs.clas if provided', t => {
+  let divCalled = false
+
+  const {div} = dscript((tagName, attrs) => {
+    if (tagName === 'div') {
+      t.is(attrs.id, '3')
+      t.is(attrs.class, 'yo')
+      divCalled = true
+    }
+  })
+
+  div('.yo', {class: 'hi', id: '3'})
+
+  t.ok(divCalled)
 })

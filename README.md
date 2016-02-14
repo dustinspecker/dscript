@@ -101,7 +101,7 @@ export default ({props}) =>
 
 #### createElement
 
-Returns an object with properties consisting of HTML tags with function values. Each of these functions accepts an optional attributes object and children array.
+Returns an object with properties consisting of HTML tags with function values. Each of these functions accepts optional CSS classes/id selector, attributes object, and children array.
 
 type: `function`
 

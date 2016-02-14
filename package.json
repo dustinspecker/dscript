@@ -21,7 +21,9 @@
     "lib"
   ],
   "dependencies": {
-    "html-tags": "^1.1.1"
+    "html-tags": "^1.1.1",
+    "object-assign": "^4.0.1",
+    "parse-css-class-id-selector": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.11.0",
