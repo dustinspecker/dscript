@@ -1,4 +1,5 @@
 'use strict'
+import {createElement} from 'react'
 import {element} from 'deku'
 import test from 'ava'
 
@@ -217,4 +218,16 @@ test('verify it works with Deku\'s element', t => {
   t.is(dekuDiv.type, 'div')
   t.same(dekuDiv.attributes, {title: 'hello', class: 'yo', id: 'hi'})
   t.same(dekuDiv.children[0], {type: '#text', nodeValue: 'world'})
+})
+
+test('verify it works with React\'s createElement', t => {
+  const {div} = dscript(createElement)
+
+  const reactDiv = div('.yo#hi', {title: 'hello'}, ['world'])
+
+  t.is(reactDiv.type, 'div')
+  t.is(reactDiv.props.title, 'hello')
+  t.is(reactDiv.props.id, 'hi')
+  t.is(reactDiv.props.class, 'yo')
+  t.same(reactDiv.props.children[0], 'world')
 })
