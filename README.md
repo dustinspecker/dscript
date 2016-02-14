@@ -117,18 +117,16 @@ export default ({props}) =>
 
 ## API
 ### dscript(createElement)
+Returns an object with properties consisting of HTML tags with values being [creator functions](#creator-functions).
 
 #### createElement
-
-Returns an object with properties consisting of HTML tags with function values. Each of these functions accepts optional CSS classes/id selector, attributes object, and children array.
-
 type: `function`
 
 A function to use to create the Virtual DOM. For example, React's `createElement` or Deku's `element`.
 
 ### dscript(createElement)(customComponent)
 
-Returns a function to be used in dscript.
+Returns a [creator function](#creator-function) to be used in dscript.
 
 For example:
 
@@ -152,6 +150,33 @@ Same as above
 type: `any`
 
 Should be a valid component for the `createElement` function.
+
+
+### Creator Functions
+`creatorFunction([cssClassesAndOrIdSelector,] [attributes,] [children])`
+
+A function that returns a virtual DOM node created with `createElement`.
+
+#### cssClassesAndOrIdSelector
+type: `string`
+
+default: `null`
+
+A convenience to add class names and an id to a virtual DOM node. **Note: The provided selector will override `attribute`'s class and id.**
+
+### attributes
+type: `object`
+
+default: `{}`
+
+An object that will be passed as the attributes to the virutal DOM node.
+
+### children
+type: `array`
+
+default: `[]`
+
+The list of children passed to the created virtual DOM node.
 
 ## LICENSE
 MIT © [Dustin Specker](https://github.com/dustinspecker)
