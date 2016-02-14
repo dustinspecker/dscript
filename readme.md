@@ -15,12 +15,16 @@ npm install --save dscript
 import dscript from 'dscript'
 import {element} from 'deku'
 
+import customComponent from './custom-component'
+
 const {div, li, ul} = dscript(element)
+const customComponentCreator = dscript(element)(customComponent)
 
 const handleClick = () => alert('hi!')
 
 export default ({props}) =>
   div('.list-container', {onClick: handleClick}, [
+    customComponentCreator({total: props.total}),
     ul(
       props.items.map(item =>
         li([item.name])
