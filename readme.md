@@ -30,6 +30,8 @@ export default ({props}) =>
 ```
 
 ## Usage with React
+**It is recommended to use [dscript-react](https://github.com/dustinspecker/dscript-react) to remove dscript boilerplate.**
+
 Take the following:
 ```javascript
 import React from 'react'
@@ -73,6 +75,8 @@ export default props =>
 ```
 
 ## Usage with Deku
+**It is recommended to use [dscript-deku](https://github.com/dustinspecker/dscript-deku) to remove dscript boilerplate.**
+
 Take the following:
 ```javascript
 import {element} from 'deku'
