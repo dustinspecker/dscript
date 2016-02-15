@@ -134,7 +134,7 @@ A function to use to create the Virtual DOM. For example, React's `createElement
 
 ### dscript(createElement)(customComponent)
 
-Returns a [creator function](#creator-function) to be used in dscript.
+Returns a [creator function](#creator-functions) to be used in dscript.
 
 For example:
 
