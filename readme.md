@@ -10,6 +10,8 @@
 npm install --save dscript
 ```
 
+**Note: Webpack users will need to setup a [json-loader](https://github.com/webpack/json-loader) as dscript relies on [html-tags](https://github.com/sindresorhus/html-tags), which uses a [JSON file](https://github.com/sindresorhus/html-tags/blob/master/html-tags.json)**
+
 ## General Usage
 ```javascript
 import dscript from 'dscript'
