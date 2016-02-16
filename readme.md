@@ -19,8 +19,10 @@ import {element} from 'deku'
 
 import customComponent from './custom-component'
 
-const {div, li, ul} = dscript(element)
-const customComponentCreator = dscript(element)(customComponent)
+const creator = dscript(element)
+
+const {div, li, ul} = creator
+const customComponentCreator = creator(customComponent)
 
 const handleClick = () => alert('hi!')
 
@@ -145,8 +147,10 @@ import {createElement} from 'react'
 import customComponent from './lib/custom-react-component/'
 import dscript from 'dscript'
 
-const {div} = dscript(createElement)
-const custom = dscript(createElement)(customComponent)
+const creator = dscript(createElement)
+
+const {div} = creator
+const custom = creator(customComponent)
 
 export default div([custom()])
 ```
