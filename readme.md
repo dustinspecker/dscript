@@ -19,18 +19,12 @@ npm install --save dscript
 import dscript from 'dscript'
 import {element} from 'deku'
 
-import customComponent from './custom-component'
-
-const creator = dscript(element)
-
-const {div, li, ul} = creator
-const customComponentCreator = creator(customComponent)
+const {div, li, ul} = dscript(element)
 
 const handleClick = () => alert('hi!')
 
 export default ({props}) =>
   div('.list-container', {onClick: handleClick}, [
-    customComponentCreator({total: props.total}),
     ul(
       props.items.map(item =>
         li([item.name])
@@ -127,6 +121,33 @@ export default ({props}) =>
       li([item.name])
     )
   )
+```
+
+## Usage with Custom Components
+Custom components example is shown using React, but works with any framework that works with dscript's basic functionality.
+
+```javascript
+import dscript from 'dscript'
+import {createElement} from 'react'
+
+import customComponent from './custom-component'
+
+const creator = dscript(element)
+
+const {div, li, ul} = creator
+const customComponentCreator = creator(customComponent)
+
+const handleClick = () => alert('hi!')
+
+export default props =>
+  div('.list-container', {onClick: handleClick}, [
+    customComponentCreator({total: props.total}),
+    ul(
+      props.items.map(item =>
+        li([item.name])
+      )
+    )
+  ])
 ```
 
 ## API
