@@ -132,7 +132,7 @@ import {createElement} from 'react'
 
 import customComponent from './custom-component'
 
-const creator = dscript(element)
+const creator = dscript(createElement)
 
 const {div, li, ul} = creator
 const customComponentCreator = creator(customComponent)
