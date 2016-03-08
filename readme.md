@@ -5,7 +5,7 @@
 
 > Framework agnostic hyperscript
 
-> Should work with any JSX pragma that works out of the box with Babel's JSX implementation or a function that accepts an HTML tag or component, attributes object, and children array.
+> Should work with any JSX pragma that works out of the box with Babel's JSX implementation or a function that accepts an HTML tag or component, attributes object, and children list.
 
 ## Install
 ```
@@ -209,7 +209,7 @@ default: `{}`
 An object that will be passed as the attributes to the virutal DOM node.
 
 ### children
-type: `array`
+type: `...Elements`
 
 default: `[]`
 

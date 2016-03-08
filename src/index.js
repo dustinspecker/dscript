@@ -41,7 +41,7 @@ module.exports = createElement => {
     throw new TypeError('Expected createElement to be a function')
   }
 
-  const creator = tagOrComponent => (classesAndId, attrs, children) => {
+  const creator = tagOrComponent => (classesAndId, attrs, ...children) => {
     let attrsToPass = attrs || {}
       , childrenToPass = children || []
 
@@ -64,7 +64,7 @@ module.exports = createElement => {
       objectAssign(attrsToPass, getClassesAndId(classesAndId))
     }
 
-    return createElement(tagOrComponent, attrsToPass, childrenToPass)
+    return createElement(tagOrComponent, attrsToPass, ...childrenToPass)
   }
 
   // attach each HTML creator function to a creator function for custom components

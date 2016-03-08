@@ -43,7 +43,7 @@ test('dscript fns pass attributes object', t => {
     class: 'goodbye'
   }
 
-  const {div, p} = dscript((tagName, attrs, children) => {
+  const {div, p} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'div' && attrs === divAttrs) {
       t.same(children, [])
       divCalled = true
@@ -84,12 +84,14 @@ test('dscript fns pass children array', t => {
   const bChildren = ['yo']
   const videoChildren = ['hello']
 
-  const {b, video} = dscript((tagName, attrs, children) => {
-    if (tagName === 'b' && children === bChildren) {
+  const {b, video} = dscript((tagName, attrs, ...children) => {
+    if (tagName === 'b') {
+      t.same(children, bChildren)
       bCalled = true
     }
 
-    if (tagName === 'video' && children === videoChildren) {
+    if (tagName === 'video') {
+      t.same(children, videoChildren)
       videoCalled = true
     }
   })
@@ -104,7 +106,7 @@ test('dscript fns pass children array', t => {
 test('dscript fns pass empty children array by default', t => {
   let spanCalled = false
 
-  const {span} = dscript((tagName, attrs, children) => {
+  const {span} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'span') {
       t.same(children, [])
       spanCalled = true
@@ -119,7 +121,7 @@ test('dscript fns pass empty children array by default', t => {
 test('dscript fn can handle no attrs, but selector and chilren', t => {
   let spanCalled = false
 
-  const {span} = dscript((tagName, attrs, children) => {
+  const {span} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'span') {
       t.is(attrs.class, 'hi')
       t.same(children, ['yo'])
@@ -137,10 +139,10 @@ test('dscript fns pass empty object if attrs is not passed but children is', t =
 
   const divChildren = ['hi']
 
-  const {div} = dscript((tagName, attrs, children) => {
+  const {div} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'div') {
       t.same(attrs, {})
-      t.is(children, divChildren)
+      t.same(children, divChildren)
       divCalled = true
     }
   })
@@ -167,7 +169,7 @@ test('dscript is a fn that accepts a list of non html tags to pass to createElem
 test('dscript attaches optional classes and id to attributes and overrides provided attrs', t => {
   let divCalled = false
 
-  const {div} = dscript((tagName, attrs, children) => {
+  const {div} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'div') {
       t.is(attrs.id, 'world')
       t.same(children, [])
