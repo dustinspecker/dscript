@@ -27,8 +27,8 @@ test('returns an object with html tag names that execute createElement', t => {
   a()
   button()
 
-  t.ok(aCalled)
-  t.ok(buttonCalled)
+  t.truthy(aCalled)
+  t.truthy(buttonCalled)
 })
 
 test('dscript fns pass attributes object', t => {
@@ -45,12 +45,12 @@ test('dscript fns pass attributes object', t => {
 
   const {div, p} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'div' && attrs === divAttrs) {
-      t.same(children, [])
+      t.deepEqual(children, [])
       divCalled = true
     }
 
     if (tagName === 'p' && attrs === pAttrs) {
-      t.same(children, [])
+      t.deepEqual(children, [])
       pCalled = true
     }
   })
@@ -58,8 +58,8 @@ test('dscript fns pass attributes object', t => {
   div(divAttrs)
   p(pAttrs)
 
-  t.ok(divCalled)
-  t.ok(pCalled)
+  t.truthy(divCalled)
+  t.truthy(pCalled)
 })
 
 test('dscript fns pass empty object by default for attributes', t => {
@@ -67,14 +67,14 @@ test('dscript fns pass empty object by default for attributes', t => {
 
   const {input} = dscript((tagName, attrs) => {
     if (tagName === 'input') {
-      t.same(attrs, {})
+      t.deepEqual(attrs, {})
       inputCalled = true
     }
   })
 
   input()
 
-  t.ok(inputCalled)
+  t.truthy(inputCalled)
 })
 
 test('dscript fns pass children array', t => {
@@ -86,12 +86,12 @@ test('dscript fns pass children array', t => {
 
   const {b, video} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'b') {
-      t.same(children, bChildren)
+      t.deepEqual(children, bChildren)
       bCalled = true
     }
 
     if (tagName === 'video') {
-      t.same(children, videoChildren)
+      t.deepEqual(children, videoChildren)
       videoCalled = true
     }
   })
@@ -99,8 +99,8 @@ test('dscript fns pass children array', t => {
   b({}, bChildren)
   video({}, videoChildren)
 
-  t.ok(bCalled)
-  t.ok(videoCalled)
+  t.truthy(bCalled)
+  t.truthy(videoCalled)
 })
 
 test('dscript fns pass empty children array by default', t => {
@@ -108,14 +108,14 @@ test('dscript fns pass empty children array by default', t => {
 
   const {span} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'span') {
-      t.same(children, [])
+      t.deepEqual(children, [])
       spanCalled = true
     }
   })
 
   span()
 
-  t.ok(spanCalled)
+  t.truthy(spanCalled)
 })
 
 test('dscript fn can handle no attrs, but selector and chilren', t => {
@@ -124,14 +124,14 @@ test('dscript fn can handle no attrs, but selector and chilren', t => {
   const {span} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'span') {
       t.is(attrs.class, 'hi')
-      t.same(children, ['yo'])
+      t.deepEqual(children, ['yo'])
       spanCalled = true
     }
   })
 
   span('.hi', ['yo'])
 
-  t.ok(spanCalled)
+  t.truthy(spanCalled)
 })
 
 test('dscript fns pass empty object if attrs is not passed but children is', t => {
@@ -141,15 +141,15 @@ test('dscript fns pass empty object if attrs is not passed but children is', t =
 
   const {div} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'div') {
-      t.same(attrs, {})
-      t.same(children, divChildren)
+      t.deepEqual(attrs, {})
+      t.deepEqual(children, divChildren)
       divCalled = true
     }
   })
 
   div(divChildren)
 
-  t.ok(divCalled)
+  t.truthy(divCalled)
 })
 
 test('dscript is a fn that accepts a list of non html tags to pass to createElement', t => {
@@ -163,7 +163,7 @@ test('dscript is a fn that accepts a list of non html tags to pass to createElem
 
   fancy()
 
-  t.ok(fancyCalled)
+  t.truthy(fancyCalled)
 })
 
 test('dscript attaches optional classes and id to attributes and overrides provided attrs', t => {
@@ -172,14 +172,14 @@ test('dscript attaches optional classes and id to attributes and overrides provi
   const {div} = dscript((tagName, attrs, ...children) => {
     if (tagName === 'div') {
       t.is(attrs.id, 'world')
-      t.same(children, [])
+      t.deepEqual(children, [])
       divCalled = true
     }
   })
 
   div('.hello#world.good-bye', {class: 'yo', id: '3'})
 
-  t.ok(divCalled)
+  t.truthy(divCalled)
 })
 
 test('id selector overrides attrs.id if provided', t => {
@@ -195,7 +195,7 @@ test('id selector overrides attrs.id if provided', t => {
 
   div('#yo', {class: 'hi', id: '3'})
 
-  t.ok(divCalled)
+  t.truthy(divCalled)
 })
 
 test('class selector overrides attrs.clas if provided', t => {
@@ -211,7 +211,7 @@ test('class selector overrides attrs.clas if provided', t => {
 
   div('.yo', {class: 'hi', id: '3'})
 
-  t.ok(divCalled)
+  t.truthy(divCalled)
 })
 
 test('verify it works with Deku\'s element', t => {
@@ -220,8 +220,8 @@ test('verify it works with Deku\'s element', t => {
   const dekuDiv = div('.yo#hi', {title: 'hello'}, ['world'])
 
   t.is(dekuDiv.type, 'div')
-  t.same(dekuDiv.attributes, {title: 'hello', class: 'yo', id: 'hi'})
-  t.same(dekuDiv.children[0], {type: '#text', nodeValue: 'world'})
+  t.deepEqual(dekuDiv.attributes, {title: 'hello', class: 'yo', id: 'hi'})
+  t.deepEqual(dekuDiv.children[0], {type: '#text', nodeValue: 'world'})
 })
 
 test('verify it works with React\'s createElement', t => {
@@ -233,5 +233,5 @@ test('verify it works with React\'s createElement', t => {
   t.is(reactDiv.props.title, 'hello')
   t.is(reactDiv.props.id, 'hi')
   t.is(reactDiv.props.class, 'yo')
-  t.same(reactDiv.props.children[0], 'world')
+  t.deepEqual(reactDiv.props.children[0], 'world')
 })
