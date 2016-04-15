@@ -70,6 +70,7 @@ module.exports = createElement => {
   // attach each HTML creator function to a creator function for custom components
   return htmlTags.reduce((acc, tag) => {
     acc[tag] = creator(tag)
+
     return acc
   }, creator)
 }
