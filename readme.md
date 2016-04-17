@@ -35,7 +35,7 @@ export default ({props}) =>
   div('.list-container', {onClick: handleClick}, [
     ul(
       props.items.map(item =>
-        li([item.name])
+        li(item.name)
       )
     )
   ])
@@ -80,7 +80,7 @@ const {li, ul} = dscript(createElement)
 export default props =>
   ul(
     props.items.map(item =>
-      li([item.name])
+      li(item.name)
     )
   )
 
@@ -126,7 +126,7 @@ const {li, ul} = dscript(element)
 export default ({props}) =>
   ul(
     props.items.map(item =>
-      li([item.name])
+      li(item.name)
     )
   )
 ```
@@ -152,7 +152,7 @@ export default props =>
     customComponentCreator({total: props.total}),
     ul(
       props.items.map(item =>
-        li([item.name])
+        li(item.name)
       )
     )
   ])
