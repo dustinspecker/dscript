@@ -1,7 +1,11 @@
 # dscript
-[![NPM version](https://badge.fury.io/js/dscript.svg)](https://badge.fury.io/js/dscript) [![Build Status](https://travis-ci.org/dustinspecker/dscript.svg)](https://travis-ci.org/dustinspecker/dscript) [![Coverage Status](https://img.shields.io/coveralls/dustinspecker/dscript.svg)](https://coveralls.io/r/dustinspecker/dscript?branch=master)
+[![NPM version](https://badge.fury.io/js/dscript.svg)](https://badge.fury.io/js/dscript)
+[![Build Status](https://travis-ci.org/dustinspecker/dscript.svg)](https://travis-ci.org/dustinspecker/dscript)
+[![Coverage Status](https://img.shields.io/coveralls/dustinspecker/dscript.svg)](https://coveralls.io/r/dustinspecker/dscript?branch=master)
 
-[![Code Climate](https://codeclimate.com/github/dustinspecker/dscript/badges/gpa.svg)](https://codeclimate.com/github/dustinspecker/dscript) [![Dependencies](https://david-dm.org/dustinspecker/dscript.svg)](https://david-dm.org/dustinspecker/dscript/#info=dependencies&view=table) [![DevDependencies](https://david-dm.org/dustinspecker/dscript/dev-status.svg)](https://david-dm.org/dustinspecker/dscript/#info=devDependencies&view=table)
+[![Code Climate](https://codeclimate.com/github/dustinspecker/dscript/badges/gpa.svg)](https://codeclimate.com/github/dustinspecker/dscript)
+[![Dependencies](https://david-dm.org/dustinspecker/dscript.svg)](https://david-dm.org/dustinspecker/dscript/#info=dependencies&view=table)
+[![DevDependencies](https://david-dm.org/dustinspecker/dscript/dev-status.svg)](https://david-dm.org/dustinspecker/dscript/#info=devDependencies&view=table)
 
 > Framework agnostic hyperscript
 
