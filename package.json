@@ -1,15 +1,19 @@
 {
   "name": "dscript",
-  "version": "1.0.0",
+  "version": "0.0.0-semantic-release",
   "description": "Framework agnostic hyperscript",
   "main": "lib/index.js",
   "scripts": {
     "compile": "babel src --out-dir lib",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint ./ --ignore-pattern node_modules/ --ignore-pattern lib",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "test": "npm run lint && npm run compile && nyc ava"
   },
-  "repository": "dustinspecker/dscript",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dustinspecker/dscript.git"
+  },
   "keywords": [
     "dscript",
     "hyperscript",
@@ -45,7 +49,8 @@
     "eslint-path-formatter": "^0.1.1",
     "eslint-plugin-no-use-extend-native": "^0.3.1",
     "nyc": "^6.0.0",
-    "react": "^15.0.0"
+    "react": "^15.0.0",
+    "semantic-release": "^4.3.5"
   },
   "ava": {
     "files": [
