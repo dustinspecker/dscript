@@ -7,6 +7,8 @@
 [![Dependencies](https://david-dm.org/dustinspecker/dscript.svg)](https://david-dm.org/dustinspecker/dscript/#info=dependencies&view=table)
 [![DevDependencies](https://david-dm.org/dustinspecker/dscript/dev-status.svg)](https://david-dm.org/dustinspecker/dscript/#info=devDependencies&view=table)
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 > Framework agnostic hyperscript
 
 > Should work with any JSX pragma that works out of the box with Babel's JSX implementation or a function that accepts an HTML tag or component, attributes object, and children list.
