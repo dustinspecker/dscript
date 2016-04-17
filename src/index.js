@@ -37,6 +37,7 @@ const getClassesAndId = selector => {
  * @return {Function} - explained above
  */
 module.exports = createElement => {
+  /* eslint-disable complexity */
   if (typeof createElement !== 'function') {
     throw new TypeError('Expected createElement to be a function')
   }
@@ -49,6 +50,10 @@ module.exports = createElement => {
       // case: div('.hello', ['hi'])
       childrenToPass = attrsToPass
       attrsToPass = {}
+    } else if (typeof attrsToPass !== 'object') {
+      // case: div('.hello', 7)
+      childrenToPass = [attrsToPass]
+      attrsToPass = {}
     }
 
     if (Array.isArray(classesAndId)) {
@@ -59,9 +64,12 @@ module.exports = createElement => {
       attrsToPass = classesAndId
     }
 
-    if (typeof classesAndId === 'string') {
+    if (typeof classesAndId === 'string' && (classesAndId.indexOf('.') === 0 || classesAndId.indexOf('#') === 0)) {
       // case: div('.hello')
       objectAssign(attrsToPass, getClassesAndId(classesAndId))
+    } else if (classesAndId !== undefined && typeof classesAndId !== 'object') {
+      // case: div(2342374)
+      childrenToPass = [classesAndId]
     }
 
     return createElement(tagOrComponent, attrsToPass, ...childrenToPass)

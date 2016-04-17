@@ -118,6 +118,66 @@ test('dscript fns pass empty children array by default', t => {
   t.truthy(spanCalled)
 })
 
+test('it passes single child when class and attrs are provided', t => {
+  let spanCalled = false
+
+  const {span} = dscript((tagName, attrs, ...children) => {
+    if (tagName === 'span') {
+      t.deepEqual(children, [789])
+      spanCalled = true
+    }
+  })
+
+  span('.hello', {}, 789)
+
+  t.truthy(spanCalled)
+})
+
+test('it passes single child when class is provied', t => {
+  let spanCalled = false
+
+  const {span} = dscript((tagName, attrs, ...children) => {
+    if (tagName === 'span') {
+      t.deepEqual(children, [789])
+      spanCalled = true
+    }
+  })
+
+  span('.hello', 789)
+
+  t.truthy(spanCalled)
+})
+
+test('it passes single child when only non-string child is passed', t => {
+  let spanCalled = false
+
+  const {span} = dscript((tagName, attrs, ...children) => {
+    if (tagName === 'span') {
+      t.deepEqual(children, [789])
+      spanCalled = true
+    }
+  })
+
+  span(789)
+
+  t.truthy(spanCalled)
+})
+
+test('it passes single child when only string child is passed', t => {
+  let spanCalled = false
+
+  const {span} = dscript((tagName, attrs, ...children) => {
+    if (tagName === 'span') {
+      t.deepEqual(children, ['hello'])
+      spanCalled = true
+    }
+  })
+
+  span('hello')
+
+  t.truthy(spanCalled)
+})
+
 test('dscript fn can handle no attrs, but selector and chilren', t => {
   let spanCalled = false
 
