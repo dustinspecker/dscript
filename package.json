@@ -49,7 +49,7 @@
     "eslint-path-formatter": "^0.1.1",
     "eslint-plugin-no-use-extend-native": "^0.3.1",
     "eslint-plugin-xo": "^0.4.0",
-    "nyc": "^6.0.0",
+    "nyc": "^8.3.1",
     "react": "^15.0.0",
     "semantic-release": "^4.3.5"
   },
