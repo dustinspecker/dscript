@@ -44,7 +44,7 @@
     "coveralls": "^2.11.6",
     "cz-conventional-changelog": "^1.1.5",
     "deku": "^2.0.0-rc16",
-    "eslint": "^2.4.0",
+    "eslint": "^3.9.0",
     "eslint-config-dustinspecker": "^1.0.0",
     "eslint-path-formatter": "^0.1.1",
     "eslint-plugin-no-use-extend-native": "^0.3.1",
