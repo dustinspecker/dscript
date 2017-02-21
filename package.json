@@ -41,7 +41,7 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-register": "^6.4.3",
     "coveralls": "^2.11.6",
-    "cz-conventional-changelog": "^1.1.5",
+    "cz-conventional-changelog": "^2.0.0",
     "deku": "^2.0.0-rc16",
     "eslint": "^3.10.0",
     "eslint-config-dustinspecker": "^1.0.0",
